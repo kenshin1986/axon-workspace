@@ -11,9 +11,15 @@
 set -euo pipefail
 
 # ---- Puertos custom (no chocan con el nginx en :80) ----
-APP_PORT_CUSTOM=8000
-PROXY_HTTP_PORT=8080
-PROXY_HTTPS_PORT=8443
+# Overrideable via env vars, ej:
+#   APP_PORT_CUSTOM=9100 PROXY_HTTPS_PORT=9443 bash install-coolify-usufrua.sh
+#
+# Defaults elegidos para Usufrua:
+#   :8000 lo usa el FastAPI/Ollama del otro huésped → usamos :9000
+#   :8080 y :8443 están libres
+APP_PORT_CUSTOM=${APP_PORT_CUSTOM:-9000}
+PROXY_HTTP_PORT=${PROXY_HTTP_PORT:-8080}
+PROXY_HTTPS_PORT=${PROXY_HTTPS_PORT:-8443}
 
 log() { printf '\n\033[1;36m[install-coolify] %s\033[0m\n' "$*"; }
 fail() { printf '\n\033[1;31m[install-coolify ERROR] %s\033[0m\n' "$*" >&2; exit 1; }
