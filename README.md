@@ -1,5 +1,7 @@
 # admin_data_project
 
+> Deployed at **https://usufrua-axon.tail7f8b21.ts.net/** (auto-deploy on push to `main` via Coolify + Tailscale Funnel).
+
 Plataforma **self-hosted** multi-proyecto con:
 
 - Kanban configurable con jerarquía Epic → Tarea → Subtarea.
